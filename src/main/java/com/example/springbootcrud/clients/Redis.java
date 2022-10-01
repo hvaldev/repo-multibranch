@@ -112,4 +112,26 @@ public class Redis {
             }
         }
     }
+    
+    public static String branchOneMethod()
+    {
+        JedisPool branchOnePool = getPoolInstance();
+        JedisPoolConfig branchOnePoolConfig = getPoolConfig();
+
+        int active = jedisPool.getNumActive();
+        int idle = jedisPool.getNumIdle();
+        int total = active + idle;
+        String log = String.format(
+                "JedisPool: Active=%d, Idle=%d, Waiters=%d, total=%d, maxTotal=%d, minIdle=%d, maxIdle=%d",
+                active,
+                idle,
+                jedisPool.getNumWaiters(),
+                total,
+                poolConfig.getMaxTotal(),
+                poolConfig.getMinIdle(),
+                poolConfig.getMaxIdle()
+        );
+
+        return log;
+    }
 }
