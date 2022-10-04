@@ -92,5 +92,21 @@ public class Redis {
 
         return log;
     }
+    
+    public static String getMethodBranchOne()
+    {
+        JedisPool jedisPoolBranchOne = getPoolInstance();
+        JedisPoolConfig poolConfigBranchOne = getPoolConfig();
+
+        int active = jedisPoolBranchOne.getNumActive();
+        int idle = jedisPoolBranchOne.getNumIdle();
+        int total = active + idle;
+        String log = String.format(
+                "JedisPoolBranchOne"
+               
+        );
+
+        return log;
+    }
 
 }
